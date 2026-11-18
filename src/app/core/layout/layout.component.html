@@ -1,0 +1,40 @@
+<header class="topbar">
+  <button
+    class="secondary back-button"
+    type="button"
+    (click)="goBack()"
+    [disabled]="!previousPage"
+    aria-label="Go to the previous page"
+  >
+    ← Back
+  </button>
+  <a class="brand" routerLink="/employees" (click)="rememberCurrentPage()"
+    ><span class="brand-mark">E</span
+    ><span>Simplify<span class="brand-light">3x</span></span></a
+  >
+  <div class="topbar-caption">EMPLOYEE MANAGEMENT</div>
+  <span class="topbar-dot"></span>
+</header>
+<main class="shell">
+  <nav class="tabs" aria-label="Management sections">
+    <button
+      routerLink="/employees"
+      routerLinkActive="active"
+      (click)="rememberCurrentPage()"
+    >
+      Employees
+    </button>
+    <button
+      routerLink="/departments"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: false }"
+      (click)="rememberCurrentPage()"
+    >
+      Departments
+    </button>
+  </nav>
+  <router-outlet></router-outlet>
+</main>
+<footer [attr.title]="'Today: ' + (today | date: 'mediumDate')">
+  Employee &amp; Department Management <span>•</span> Internal directory
+</footer>
